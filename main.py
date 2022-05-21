@@ -309,7 +309,8 @@ def wallet():
 
     latest_txs = format_latest_txs()
 
-    overview = {"address: ": address, "balance: ": balance_cache if balance_cache else 0}
+    overview = {"address: ": "<a href='https://explorer.0xf10.com/account/{}' target='_blank'>{}</a>".format(address, address),
+                "balance: ": balance_cache if balance_cache else 0}
 
     if privkey:
         return render_template("wallet.html", wallet_overview=json2html.convert(overview, escape=False),
@@ -443,10 +444,10 @@ def sync():
 
 
 @socketio.on('connect')
-def test_connect():
+def first_connect():
     print("connected")
 
-    overview = {"address: ": address, "balance: ": balance_cache if balance_cache else 0}
+    overview = {"address: ": '<a href="https://explorer.0xf10.com/account/{}" target="_blank">{}</a>'.format(address, address), "balance: ": balance_cache if balance_cache else 0}
 
     html = json2html.convert(overview, escape=False)
 
@@ -457,7 +458,7 @@ def test_connect():
 def handle_message():
     latest_txs = format_latest_txs()
 
-    overview = {"address: ": address, "balance: ": balance_cache if balance_cache else 0}
+    overview = {"address: ": '<a href="https://explorer.0xf10.com/account/{}" target="_blank">{}</a>'.format(address, address), "balance: ": balance_cache if balance_cache else 0}
 
     html = json2html.convert(overview, escape=False)
     emit("overview", {"data": html}, namespace="/")
@@ -480,6 +481,6 @@ if __name__ == '__main__':
     t.daemon = True
     t.start()
 
-    webview.create_window("Bamboo Wallet", "http://localhost:52323/", width=820, height=500, text_select=True)
+    webview.create_window("Bamboo Wallet", "http://localhost:52323/", width=820, height=500, text_select=True, resizable=False)
     webview.start()
     sys.exit()
