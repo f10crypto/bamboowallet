@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+<div class="centerbox">
+<h1>enter password</h1>
+
+<form name="passswdf" action="/unlockwallet" method="post">
+    <input name="passwd" type="password" placeholder="enter password">
+    <input type="submit" value="unlock"/>
+</form>
+</div>
+
+<br>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert">
+      <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+      {{ message }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+</body>
+</html>

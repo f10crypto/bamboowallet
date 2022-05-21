@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+    <script src="{{ url_for('static', filename='js/socket.io.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/jquery.min.js') }}"></script>
+</head>
+<body>
+
+<div class="centerbox">
+    <div class="wallet">
+
+        <h1>Wallet</h1>
+
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            {% for message in messages %}
+              <div class="alert">
+                  <span class="closebtn" onclick="this.parentElement.style.display='none';">&times;</span>
+                  {{ message | safe }}
+              </div>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+
+        <div class="wallet-overview">
+            {{ wallet_overview | safe }}
+        </div>
+
+        <script type="text/javascript" charset="utf-8">
+            $(document).ready(function(){
+                var socket = io();
+                socket.on('overview', function(msg) {
+                    let c1 = $('.wallet-overview').html();
+                    let c2 = c1.replace('<tbody>', '');
+                    let c3 = c2.replace('</tbody>', '');
+                    if (c3 != msg.data){
+                        $('.wallet-overview').html(msg.data);
+                    }
+                });
+
+                socket.on('txs', function(msg) {
+                    let c1 = $('.last25txs').html();
+                    let c2 = c1.replace('<tbody>', '');
+                    let c3 = c2.replace('</tbody>', '');
+                    if (c3 != msg.data){
+                        $('.last25txs').html(msg.data);
+                    }
+                });
+
+                var update = setInterval(function() {
+                    socket.emit('update_wallet')
+                }, 1000);
+
+            });
+        </script>
+
+        <a href="/sendtx"><p>send tx</p></a>
+
+        <br>
+
+        <h2>latest transactions</h2>
+
+        <div class="last25txs">
+            {{ txs | safe }}
+        </div>
+    </div>
+</div>
+</body>
+</html>

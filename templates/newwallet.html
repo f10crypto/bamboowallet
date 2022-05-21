@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+<div class="centerbox">
+
+<h1>write down mnemonic phrase</h1>
+
+<div class="phrase">
+
+{{ phrase | safe }}
+
+</div>
+
+<br>
+
+<p>(to recover your wallet you'll need both your password (if set) and mnemonic (wallet.dat)! <br> be sure to make a backup of both!)</p>
+
+<a href="/wallet"><h2>continue</h2></a>
+
+</div>
+
+</body>
+</html>

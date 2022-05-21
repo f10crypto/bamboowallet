@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+<div class="centerbox">
+
+<h1>confirm transaction</h1>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+    {% for message in messages %}
+      <div class="alert">
+      {{ message | safe }}
+      </div>
+    {% endfor %}
+  {% endif %}
+{% endwith %}
+
+{{ confirm | safe }}
+
+<a href="/sendtx"><p>back</p></a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+<div class="centerbox">
+
+<h1>send transaction</h1>
+
+<form name="txf" action="/sendtx" method="post">
+    <label>amount (BMB)</label>
+    <input id= "amount" name="amount" type="number" value=0 min=0.0001 step=0.0001>
+    <br>
+    <label>fee (leaf)</label>
+    <input name="fee" type="number" value=1 min=1 step=1>
+    <br>
+    <label>recipient</label>
+    <input name="recipient" type="text" placeholder="00FFF...">
+    <br>
+    <input type="submit"/>
+</form>
+<br><br>
+<a href="/wallet"><p>back</p></a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+
+<div class="centerbox">
+
+<h1>choose password</h1>
+
+<form name="passswdf" action="/newwallet" method="post">
+    <input name="passwd" type="password" placeholder="enter password">
+    <input type="submit" value="next"/>
+</form>
+
+</div>
+
+</body>
+</html>

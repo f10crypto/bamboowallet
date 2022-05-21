@@ -1,0 +1,109 @@
+@font-face {
+    font-family: 'Roboto Mono', monospace;
+    src: {{ url_for('static', filename='RobotoMono-Light.ttf') }};
+}
+
+body {
+    font-family: 'Roboto Mono', monospace;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    background-color: #e6e6e6;
+}
+
+li {
+    border: hidden;
+}
+
+th {
+    border: hidden;
+    font-size: 14px;
+}
+
+td {
+    border: hidden;
+}
+
+tr {
+    border: hidden;
+}
+
+table {
+    border: hidden;
+    font-size: 13px;
+}
+
+a:link {
+    color: black;
+    text-decoration: underline;
+}
+
+a:visited {
+    color: black;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: black;
+    font-weight: bold;
+}
+
+input {
+  width: 40%;
+  padding: 8px 14px;
+  margin: 12px 0 0 0;
+  box-sizing: border-box;
+}
+
+.alert {
+  padding: 20px;
+  background-color: #FECF2B;
+  color: white;
+  margin-bottom: 15px;
+}
+
+.closebtn {
+  margin-left: 15px;
+  color: white;
+  font-weight: bold;
+  float: right;
+  font-size: 22px;
+  line-height: 20px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.closebtn:hover {
+  color: black;
+}
+
+.wallet-overview {
+    background: #f2f2f2;
+    border: 1px solid dimgray;
+}
+
+.last25txs {
+    overflow-y: auto;
+    overflow-x: auto;
+    max-height: 30vh;
+}
+
+.phrase {
+    background: #f2f2f2;
+}
+
+.centerbox {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  border: 2px solid dimgray;
+  padding: 4px;
+    background: white;
+}
+
+.wallet {
+    width: 80vw;
+    height: 80vh;
+}
