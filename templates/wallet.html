@@ -34,18 +34,16 @@
                 var socket = io();
                 socket.on('overview', function(msg) {
                     let c1 = $('.wallet-overview').html();
-                    let c2 = c1.replace('<tbody>', '');
-                    let c3 = c2.replace('</tbody>', '');
-                    if (c3 != msg.data){
+                    c1 = c1.replace('<tbody>', '');
+                    c1 = c1.replace('</tbody>', '');
+                    if (c1 != msg.data){
                         $('.wallet-overview').html(msg.data);
                     }
                 });
 
                 socket.on('txs', function(msg) {
-                    let c1 = $('.last25txs').html();
-                    let c2 = c1.replace('<tbody>', '');
-                    let c3 = c2.replace('</tbody>', '');
-                    if (c3 != msg.data){
+                    let c2 = $('.last25txs').html();
+                    if (c2 != msg.data){
                         $('.last25txs').html(msg.data);
                     }
                 });
