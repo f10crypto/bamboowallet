@@ -428,7 +428,7 @@ def format_latest_txs():
 # sync
 
 
-@scheduler.task('interval', id='sync', seconds=5, misfire_grace_time=60)
+@scheduler.task('interval', id='sync', seconds=10, misfire_grace_time=60)
 def sync():
     with scheduler.app.app_context():
         global balance_cache, latest_txs_cache
