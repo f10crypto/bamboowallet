@@ -21,7 +21,7 @@ ALLOWED_EXTENSIONS = {'dat'}
 
 app = Flask(__name__)
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
-app.config['SECRET_KEY'] = "verysecret1"
+app.config['SECRET_KEY'] = os.urandom(16)
 
 scheduler = APScheduler()
 scheduler.init_app(app)
@@ -39,7 +39,7 @@ txjson_b = None
 balance_cache = None
 latest_txs_cache = None
 
-NODES = ["178.254.42.138", "54.185.169.234", "52.10.123.71"]
+NODES = ["178.254.42.138", "173.230.139.86"]
 
 
 # Landing
